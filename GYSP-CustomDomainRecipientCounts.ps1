@@ -1,4 +1,10 @@
 ﻿$AcceptedDomains = Get-AcceptedDomain | Where-Object { $_.DomainName -notlike "*onmicrosoft.com" }
+
+$UserMailboxArray = @()
+$MailUserArray = @()
+$MailContactArray = @()
+$MailUniversalDistributionGroupArray = @()
+$MailUniversalSecurityGroupArray = @()
 $RecipientTotalsArray = @()
 
 foreach ($AcceptedDomain in $AcceptedDomains) {
@@ -11,22 +17,22 @@ foreach ($AcceptedDomain in $AcceptedDomains) {
     $MailUniversalDistributionGroupArray = $Recipients | Where-Object { $_.RecipientType -eq "MailUniversalDistributionGroup" }
     $MailUniversalSecurityGroupArray = $Recipients | Where-Object { $_.RecipientType -eq "MailUniversalSecurityGroup" }
     
-    $RecipientsCount =$Recipients.Count
-    $UserMailboxCount = $UserMailboxArray.Count
-    $MailUserCount = $MailUserArray.Count
-    $MailContactCount = $MailContactArray.Count
-    $MailUniversalDistributionGroupCount = $MailUniversalDistributionGroupArray.Count
-    $MailUniversalSecurityGroupCount = $MailUniversalSecurityGroupArray.Count
+    $RecipientsTotal =$Recipients | Measure
+    $UserMailboxArrayTotal = $UserMailboxArray | Measure
+    $MailUserArrayTotal = $MailUserArray | Measure
+    $MailContsctArrayTotal = $MailContsctArray | Measure
+    $MailUniversalDistributionGroupArrayTotal = $MailUniversalDistributionGroupArray | Measure
+    $MailUniversalSecurityGroupArrayTotal = $MailUniversalSecurityGroupArray | Measure
 
     $RecipientTotalsArray += [PSCustomObject]@{
         CustomDomain = $CustomDomain
-        UserMailbox = $UserMailboxCount
-        MailUser = $MailUserCount
-        MailContact = $MailContactCount
-        MailUniversalDistributionGroup = $MailUniversalDistributionGroupCount
-        MailUniversalSecurityGroup = $MailUniversalSecurityGroupCount
-        Total = $RecipientsCount
+            UserMailbox = $UserMailboxArrayTotal.Count
+            MailUser = $MailUserArrayTotal.Count
+            MailContact = $MailContactArrayTotal.Count
+            MailUniversalDistributionGroup = $MailUniversalDistributionGroupArrayTotal.Count
+            MailUniversalSecurityGroup = $MailUniversalSecurityGroupArrayTotal.Count
+            Total = $RecipientsTotal.Count
     }
 }
 
-$RecipientTotalsArray | Export-Csv .\UBRecipients.csv -NoTypeInformation
+$RecipientTotalsArray | Export-Csv .\Recipients.csv -NoTypeInformation
