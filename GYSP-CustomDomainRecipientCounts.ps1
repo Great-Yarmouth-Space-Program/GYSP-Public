@@ -20,18 +20,18 @@ foreach ($AcceptedDomain in $AcceptedDomains) {
     $RecipientsTotal =$Recipients | Measure
     $UserMailboxArrayTotal = $UserMailboxArray | Measure
     $MailUserArrayTotal = $MailUserArray | Measure
-    $MailContsctArrayTotal = $MailContsctArray | Measure
+    $MailContactArrayTotal = $MailContsctArray | Measure
     $MailUniversalDistributionGroupArrayTotal = $MailUniversalDistributionGroupArray | Measure
     $MailUniversalSecurityGroupArrayTotal = $MailUniversalSecurityGroupArray | Measure
 
     $RecipientTotalsArray += [PSCustomObject]@{
         CustomDomain = $CustomDomain
-            UserMailbox = $UserMailboxArrayTotal.Count
-            MailUser = $MailUserArrayTotal.Count
-            MailContact = $MailContactArrayTotal.Count
-            MailUniversalDistributionGroup = $MailUniversalDistributionGroupArrayTotal.Count
-            MailUniversalSecurityGroup = $MailUniversalSecurityGroupArrayTotal.Count
-            Total = $RecipientsTotal.Count
+        UserMailbox = $UserMailboxArrayTotal.Count
+        MailUser = $MailUserArrayTotal.Count
+        MailContact = $MailContactArrayTotal.Count
+        MailUniversalDistributionGroup = $MailUniversalDistributionGroupArrayTotal.Count
+        MailUniversalSecurityGroup = $MailUniversalSecurityGroupArrayTotal.Count
+        Total = $RecipientsTotal.Count
     }
 }
 
