@@ -5,10 +5,7 @@
     Original Author:    Si Ansell
     Email:              graph@greatyarmouthspaceprogram.space
 
-    Use:                Create CustomDomains.csv with a single column headed id. 
-                        Populate with custom domains
-                        Run script
-                        Verification DNS records will be exported to .\DomainVerification.csv
+    Use:                Gets a total of recipients for each custom accepted domain
 
     Updates:        
 #>
