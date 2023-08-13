@@ -10,7 +10,7 @@
                         Run script
                         Verification DNS records will be exported to .\DomainVerification.csv
 
-        Updates:        
+    Updates:        
 #>
 
 # Connect to Microsoft Graph API with required scopes
