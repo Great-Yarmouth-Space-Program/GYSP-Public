@@ -5,7 +5,10 @@
     Original Author:    Si Ansell
     Email:              graph@greatyarmouthspaceprogram.space
 
+    Modules:            ExchangeOnlineManagement
+
     Use:                Gets a total of recipients for each custom accepted domain
+                        Exports to CSV by default
 
     Updates:        
 #>
@@ -57,3 +60,4 @@ foreach ($AcceptedDomain in $AcceptedDomains) {
 
 # Export recipient counts to a CSV file
 $RecipientTotalsArray | Export-Csv .\Recipients.csv -NoTypeInformation
+#$RecipientTotalsArray | Export-Excel -Path .\Domain_Recipients_Count.xlsx -AutoSize -TableName Domain_Recipients_Count -WorksheetName Domain_Recipients_Count
