@@ -1,9 +1,9 @@
-﻿<#
+<#
     Softcat Tenant 
 
 
   .SYNOPSIS
-    Creates a Tenant Snapshot Report to assist with scoping a Microsoft 365 Tenant to Tenant Migration
+    Creates a Tenant Snapshot Report to assist with scoping a Microsoft 365 Tenant to Tenant Migration 
 
   .DESCRIPTION
   
@@ -29,7 +29,7 @@
 
 
     Modules:
-            Install-Module -Name ExchangeOnlineManagement -nocobber
+            Install-Module -Name ExchangeOnlineManagement -noclobber
             Install-Module -Name ImportExcel
             Install-Module -Name Microsoft.Online.SharePoint.PowerShell
             Install-Module -Name MicrosoftTeams -allowclobber
@@ -140,7 +140,7 @@ $ElapsedTime = "{0:HH:mm:ss}" -f ([datetime]$CurrentTime.Ticks)
 Write-Progress -Activity "Running Check $p of $TP - $Process - Elapsed Time - $ElapsedTime" -PercentComplete (($p / $TP) * 100)
 $MGUsers = @()
 $MGUsersArray = @()
-$MGUsers = Get-MGUser -All | sort displayname
+$MGUsers = Get-MGUser -All | Sort-Object displayname
 $i = 1
 Foreach($MGUser in $MGUsers) {
     If($MGUsers.Count -gt "1"){
