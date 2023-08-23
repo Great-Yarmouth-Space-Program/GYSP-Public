@@ -14,18 +14,27 @@
 
 <#
 
-Export Mailboxeds from source
+# Export Mailboxes from source
 
-$mailboxes = Get-mailbox -ResultSize unlimited
-$sharedmailbox = $mailboxes | Where{$_.RecipientTypeDetails -eq "SharedMailbox"}
+$Mailboxes = Get-mailbox -ResultSize unlimited
+$sharedmailbox = $Mailboxes | Where{$_.RecipientTypeDetails -eq "SharedMailbox"}
 $sharedmailbox | Select name,alias,Primary* | Export-Csv SharedMailboxes.csv -NoTypeInformation
 
 #>
 
-$NewSharedmailboxes = Import-Csv SharedMailboxes.csv
+# Import the list of new shared mailboxes from the CSV file
+$NewSharedMailboxes = Import-Csv SharedMailboxes.csv
 
-Foreach($NewSharedmailbox in $NewSharedmailboxes) {
-
-New-Mailbox -Shared -Name $NewSharedmailbox.Name -DisplayName $NewSharedmailbox.Name -Alias $NewSharedmailbox.Alias 
-
+# Loop through each new shared mailbox in the list
+foreach ($NewSharedMailbox in $NewSharedMailboxes) {
+    try {
+        # Create a new shared mailbox using New-Mailbox cmdlet
+        New-Mailbox -Shared -Name $NewSharedMailbox.Name -DisplayName $NewSharedMailbox.Name -Alias $NewSharedMailbox.Alias
+        # Output a success message for each created mailbox
+        Write-Host "Created shared mailbox: $($NewSharedMailbox.Name)"
+    } catch {
+        # If an error occurs during mailbox creation, catch the error and display an error message
+        Write-Host "Error creating shared mailbox: $($NewSharedMailbox.Name)"
+        Write-Host "Error message: $($_.Exception.Message)"
+    }
 }

@@ -31,12 +31,11 @@ $NewMGUsers = Import-Csv -Path $CSVFilePath
 
 # Loop through each row containing user details in the CSV file
 foreach ($NewMGUser in $NewMGUsers) {
-$Password = 
 
     # Create password profile
     $PasswordProfile = @{
     Password                             = $NewMGUser.Password
-    ForceChangePasswordNextSignIn        = $true
+    ForceChangePasswordNextSignIn        = $false
     #ForceChangePasswordNextSignInWithMfa = $true
 }
     $UserParams = @{
