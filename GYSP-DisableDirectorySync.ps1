@@ -6,6 +6,7 @@
     Email:              graph@greatyarmouthspaceprogram.space
 
     Use:                Disables AADC directory Sync
+                        ### WARNING - Directory Sync CANNOT be reestablished to the tenant for 48-72 hours ###
 
     Updates:        
 #>
