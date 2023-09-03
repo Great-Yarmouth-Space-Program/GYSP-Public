@@ -114,7 +114,7 @@ Connect-MicrosoftTeams
 
 #region Manage Template and Paths
 $Org = Get-MgOrganization
-$Date = Get-Date –format 'yyyyMMdd_HHmmss'
+$Date = Get-Date -Format 'yyyyMMdd_HHmmss'
 $Output = "Softcat_Tenant_Assessment-" + $Date + ".xlsx"
 $Template = "Softcat_Tenant_Assessment-Template-vMG1.0.2.xlsx"
 Write-Host "Copying Template to $Output"
