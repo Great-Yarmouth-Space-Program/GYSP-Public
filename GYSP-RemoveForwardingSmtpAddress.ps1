@@ -12,7 +12,7 @@
 #>
 
 
-$Forwarder = "*rawlins.embracemat.org"
+$Forwarder = "*FORWARDINGDOMIN" # Enter the forwarding domain here
 
 $Mailboxes = Get-Mailbox -ResultSize unlimited | Where{$_.ForwardingSmtpAddress -like $Forwarder}
 
@@ -21,7 +21,3 @@ Foreach($mailbox in $mailboxes) {
     Set-Mailbox $Mailbox -ForwardingSmtpAddress $Null
 
 }
-
-
-
-
