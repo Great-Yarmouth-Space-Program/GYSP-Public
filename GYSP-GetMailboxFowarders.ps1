@@ -17,6 +17,10 @@ DISCLAIMER:
     Original Author:    Si Ansell
     Email:              graph@greatyarmouthspaceprogram.space
 
+    Modules:            ExchangeOnlineManagement
+
+    Connections:        Connect-ExchangeOnline
+
     Use:                Creates a CSV with all mailbox ForwardingAddress and ForwardingSmtpAddress
                         ForwardingAddress - Forwards to INTERNAL users
                         ForwardingSmtpAddress - Forwards to EXTERNAL users
@@ -26,7 +30,7 @@ DISCLAIMER:
 #>
 
 # Initialize an empty array to store mailboxes
-$Mailboxes - @()
+$Mailboxes = @()
 
 # Retrieve all mailboxes without a limit on results
 $Mailboxes = Get-mailbox -ResultSize unlimited
@@ -65,10 +69,10 @@ Foreach ($Mailbox in $Mailboxes) {
 }
 
 # Check if the variable $Forwarders is not null or empty
-If($Forwarders -ne $Null) {
+If($ForwardingMailboxes -ne $Null) {
     # Export the contents of the $Forwarders variable to an Excel file
-    $Forwarders | Export-Excel -Path .\MailboxForwarders.xlsx -AutoSize -TableName Mailbox_Forwarders -WorksheetName Mailbox_Forwarders 
+    $ForwardingMailboxes | Export-Excel -Path .\MailboxForwarders.xlsx -AutoSize -TableName Mailbox_Forwarders -WorksheetName Mailbox_Forwarders 
     
     # Export the contents of the $Forwarders variable to a CSV file
-    $Forwarders | Export-CSV -Path .\MailboxForwarders.csv -Notypeinformation
+    $ForwardingMailboxes | Export-CSV -Path .\MailboxForwarders.csv -Notypeinformation
 }

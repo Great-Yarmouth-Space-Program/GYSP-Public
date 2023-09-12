@@ -8,7 +8,9 @@
    Modules:             ExchangeOnlineManagement
                         ImportExcel
    
-    Use:                Create Mailboxes.csv with a single column headed UserPrincipalName. 
+    Use:                Configure ALL mailboxes 
+                        OR
+                        Create Mailboxes.csv with a single column headed UserPrincipalName. 
                         Populate with required UPNs
                         Set $MaxSendSize and $MaxReceiveSize to required limits. Default is 35/36, Max is 150
                         Run script
@@ -16,8 +18,10 @@
     Updates:        
 #>
 
-# Import mailboxes from CSV
-$Mailboxes = Import-Csv .\Mailboxes!.csv
+# Get ALL mailboxes or Import mailboxes from CSV
+#$Mailboxes = Get-Mailbox -ResultSize Unlimited
+#OR
+$Mailboxes = Import-Csv .\Mailboxes.csv
 
 # Set max send and receive sizes
 $MaxSendSize = "35mb"

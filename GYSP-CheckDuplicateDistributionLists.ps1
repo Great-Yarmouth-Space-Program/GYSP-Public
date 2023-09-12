@@ -15,3 +15,5 @@ foreach ($row in $csv) {
         Write-Host "The distribution list $distributionList does not exist." -ForegroundColor Green
     }
 }
+
+Get-MgOrganization
