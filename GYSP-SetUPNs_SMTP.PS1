@@ -61,8 +61,3 @@ Foreach ($User in $Users) {
 
 # Clear the progress bar after completion
 Write-Progress -Activity "Updating Mailboxes" -Status "Completed" -Completed
-
-<#
-
-
-#>
