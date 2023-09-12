@@ -31,7 +31,6 @@ Disconnect-MgGraph
 # Remove the cached Graph API token
 Remove-Item "$env:USERPROFILE\.graph" -Recurse -Force
 
-
 # Connect to Microsoft Graph API with required scopes
 Connect-MGGraph -Scopes Domain.ReadWrite.All
 
@@ -64,4 +63,3 @@ foreach ($CustomDomain in $CustomDomains) {
 
 # Export DNS verification records to CSV file
 $DNSVerification | Export-Csv $File -NoTypeInformation
-$DNSVerification | Export-Csv .\domains.csv -NoTypeInformation

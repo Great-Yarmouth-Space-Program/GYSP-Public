@@ -5,7 +5,7 @@
     Original Author:    Si Ansell
     Email:              graph@greatyarmouthspaceprogram.space
 
-   Modules:             Microsoft Graph               Install-Module Microsoft.Graph -Scope AllUsers
+    Modules:            Microsoft Graph               Install-Module Microsoft.Graph -Scope AllUsers
    
     Use:                Stops sign-in sessions by revoking tokens for users whose UserPrincipalName does not contain "*onmicrosoft.com"
 
@@ -23,6 +23,3 @@ Foreach ($UsertoRevoke in $UserstoRevoke) {
     Revoke-MgUserSignInSession -UserId $UsertoRevoke.Id 
     Write-Host $UsertoRevoke.UserPrincipalName "token revoked" -ForegroundColor Green
 }
-
-# Disconnect from Microsoft Graph
-# Disconnect-MGGraph
