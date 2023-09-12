@@ -44,7 +44,7 @@ Foreach($User in $Users) {
     # Generate a random password consisting of 8 characters.
     # The character range includes certain special characters, numbers, uppercase, and lowercase letters.
     # The range skips characters like ", ', \ to avoid potential issues in CSV or passwords.
-    $Password = -join ((33,35,36,38+(48..57)+(64..90)+(97..107)+(109..122)) | Get-Random -Count 8 | % {[char]$_})
+    $Password = -join ((33,35,36,38+(48..57)+(64..90)+(97..107)+(109..122)) | Get-Random -Count 8 | ForEach-Object {[char]$_})
 
     # Add the user's display name, username, and the generated password to the password array.
     $PasswordArray += [PSCustomObject]@{
