@@ -85,4 +85,3 @@ If($RecipientSMTPAddressArray -ne $Null) {
     # Export the collected addresses to a CSV file after sorting by WindowsLiveID
     $RecipientSMTPAddressArray | Sort-Object WindowsliveID | Export-Csv -Path .\RecipientProxiesMASTER.csv -NoTypeInformation  
 }
-```
